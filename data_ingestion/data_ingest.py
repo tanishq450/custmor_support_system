@@ -2,7 +2,7 @@ from langchain_astradb import AstraDBVectorStore
 from dotenv import load_dotenv
 import os
 import pandas as pd
-from data_ingestion.data_transform import data_conveter
+from  data_transform import data_conveter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 
 load_dotenv()
@@ -46,9 +46,9 @@ class ingest_data:
 
 if __name__ == '__main__':
     ingest_data=ingest_data()
-    vstore=ingest_data.data_ingestion("Not none")
-    # print(f"\nInserted {len(inserted_ids)} documents.")
-    results=vstore.similarity_search("can you tell me the low budget headphone")
-    for res in results:
-        print(f"{res.page_content} {res.metadata}")
+    vstore=ingest_data.data_ingestion("Not None")
+    ##print(f"\nInserted {len(inserted_ids)} documents.")
+    ##results=vstore.similarity_search("can you tell me the low budget headphone")
+    ##for res in results:
+        ##print(f"{res.page_content} {res.metadata}")###
         
