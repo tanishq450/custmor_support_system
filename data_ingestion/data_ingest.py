@@ -11,11 +11,12 @@ GOOGLE_API_KEY=os.getenv("GOOGLE_API_KEY")
 ASTRA_DB_API_ENDPOINT=os.getenv("ASTRA_DB_API_ENDPOINT")
 ASTRA_DB_APPLICATION_TOKEN=os.getenv("ASTRA_DB_APPLICATION_TOKEN")
 ASTRA_DB_KEYSPACE=os.getenv("ASTRA_DB_KEYSPACE")
-
 os.environ["GOOGLE_API_KEY"]=GOOGLE_API_KEY
 os.environ["ASTRA_DB_API_ENDPOINT"]=ASTRA_DB_API_ENDPOINT
 os.environ["ASTRA_DB_APPLICATION_TOKEN"]=ASTRA_DB_APPLICATION_TOKEN
 os.environ["ASTRA_DB_KEYSPACE"]=ASTRA_DB_KEYSPACE
+
+
 class ingest_data:
     def __init__(self):
         print("data ingestion class has init...")
@@ -44,4 +45,10 @@ class ingest_data:
             
 
 if __name__ == '__main__':
-    data_ingestion=ingest_data()
+    ingest_data=ingest_data()
+    vstore=ingest_data.data_ingestion("Not none")
+    # print(f"\nInserted {len(inserted_ids)} documents.")
+    results=vstore.similarity_search("can you tell me the low budget headphone")
+    for res in results:
+        print(f"{res.page_content} {res.metadata}")
+        
